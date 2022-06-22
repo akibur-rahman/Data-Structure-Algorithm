@@ -1,18 +1,16 @@
 #include <stdio.h>
-#define SZ 10
 
-void main()
+void BubbleSort(int arr[], int n)
 {
-    int arr[SZ] = {8, 23, 45, 4, 34, 56, 6, 46, 7, 2}, i, j, temp, flag;
-
-    for (i = 0; i < SZ - 1; i++)
+    int i, j, flag;
+    for (i = 0; i < n; i++)
     {
         flag = 0;
-        for (j = 0; j < SZ - i - 1; j++)
+        for (j = 0; j < n - i - 1; j++)
         {
             if (arr[j] > arr[j + 1])
             {
-                temp = arr[j];
+                int temp = arr[j];
                 arr[j] = arr[j + 1];
                 arr[j + 1] = temp;
                 flag = 1;
@@ -20,12 +18,23 @@ void main()
         }
         if (flag == 0)
         {
-            break;
+            return;
         }
     }
+}
 
-    for (i = 0; i < SZ; i++)
+void printArray(int arr[], int n)
+{
+    for (int i = 0; i < n; i++)
     {
         printf("%d ", arr[i]);
     }
+}
+
+int main()
+{
+    int arr[10] = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1}, n = 10;
+    BubbleSort(arr, n);
+    printArray(arr, n);
+    return 0;
 }
