@@ -1,6 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
-
 #define SZ 10
 
 void SelectionSort(int arr[], int n)
