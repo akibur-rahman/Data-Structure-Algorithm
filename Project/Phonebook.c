@@ -4,8 +4,8 @@
 
 typedef struct node
 {
-    char name[20];
-    char number[10];
+    char name[30];
+    char number[20];
     struct node *next;
 
 } node;
