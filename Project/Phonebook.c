@@ -48,7 +48,7 @@ void read_data()
     fclose(fp);
 }
 
-void printlist()
+void print_list()
 {
     temp = head;
     while (temp != NULL)
@@ -58,7 +58,7 @@ void printlist()
     }
 }
 
-void insertdata()
+void insert_data()
 {
     temp = head;
     while (temp->next != NULL)
@@ -72,11 +72,12 @@ void insertdata()
     gets(newNode->number);
     newNode->next = temp->next;
     temp->next = newNode;
+    printf("\nPerson's Details Added Successfully\n");
 }
 
-void searchList()
+void search_list()
 {
-    char contactName[20];
+    char contactName[30];
     printf("\nEnter Name:");
     gets(contactName);
     temp = head;
@@ -88,6 +89,60 @@ void searchList()
             printf("Contact Number : %s\n", temp->number);
         }
         temp = temp->next;
+    }
+}
+
+void delete_data()
+{
+    char contactName[30];
+    printf("\nEnter Name:");
+    gets(contactName);
+    int count = 0;
+    prev = NULL;
+    temp = head;
+    if (temp == NULL)
+    {
+        printf("No data to delete!!");
+        return;
+    }
+    else
+    {
+        while (temp != NULL)
+        {
+
+            if (strcmp(temp->name, contactName) == 0)
+            {
+                if (prev == NULL)
+                {
+                    cur = temp;
+                    head = head->next;
+                    free(cur);
+                    temp = head;
+                    prev = NULL;
+                }
+                else
+                {
+                    prev->next = temp->next;
+                    cur = temp;
+                    free(cur);
+                    temp = prev->next;
+                }
+                count++;
+            }
+            else
+            {
+                prev = temp;
+                temp = temp->next;
+            }
+        }
+        if (count == 0)
+        {
+            printf("\nPerson Doesn't Exist\n");
+        }
+        else
+        {
+            printf("\nPerson Deleted Form Phonebook\n");
+        }
     }
 }
 
@@ -110,6 +165,7 @@ void selectionmenu()
 void main()
 {
     read_data();
-    printlist();
-    searchList();
+    print_list();
+    insert_data();
+    delete_data();
 }
