@@ -10,7 +10,7 @@ typedef struct node
 
 } node;
 
-node *head, *temp, *prev, *next;
+node *head, *temp, *prev, *next, *cur;
 
 void read_data()
 {
@@ -58,6 +58,39 @@ void printlist()
     }
 }
 
+void insertdata()
+{
+    temp = head;
+    while (temp->next != NULL)
+    {
+        temp = temp->next;
+    }
+    node *newNode = (node *)malloc(sizeof(node));
+    printf("\nEnter Name:");
+    gets(newNode->name);
+    printf("Enter Number:");
+    gets(newNode->number);
+    newNode->next = temp->next;
+    temp->next = newNode;
+}
+
+void searchList()
+{
+    char contactName[20];
+    printf("\nEnter Name:");
+    gets(contactName);
+    temp = head;
+    while (temp != NULL)
+    {
+        if (strcmp(temp->name, contactName) == 0)
+        {
+            printf("\nContact Name : %s\n", temp->name);
+            printf("Contact Number : %s\n", temp->number);
+        }
+        temp = temp->next;
+    }
+}
+
 void selectionmenu()
 {
     int choice;
@@ -78,4 +111,5 @@ void main()
 {
     read_data();
     printlist();
+    searchList();
 }
