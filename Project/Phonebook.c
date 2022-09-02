@@ -146,7 +146,7 @@ void delete_data()
     }
 }
 
-void selectionmenu()
+void selection_menu()
 {
     int choice;
     printf("Enter Your Choice:");
