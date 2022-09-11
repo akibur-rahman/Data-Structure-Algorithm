@@ -58,6 +58,16 @@ void print_list()
     }
 }
 
+void write_data()
+{
+    FILE *fp = fopen("data.txt", "w");
+    for (cur = head; cur; cur = cur->next)
+    {
+        fprintf(fp, "%s,%s", cur->name, cur->number);
+    }
+    fclose(fp);
+}
+
 void insert_data()
 {
     temp = head;
@@ -72,6 +82,7 @@ void insert_data()
     gets(newNode->number);
     newNode->next = temp->next;
     temp->next = newNode;
+    write_data();
     printf("\nPerson's Details Added Successfully\n");
 }
 
@@ -141,6 +152,7 @@ void delete_data()
         }
         else
         {
+            write_data();
             printf("\nPerson Deleted Form Phonebook\n");
         }
     }
