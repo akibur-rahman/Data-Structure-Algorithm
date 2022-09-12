@@ -53,7 +53,7 @@ void print_list()
     temp = head;
     while (temp != NULL)
     {
-        printf("%s\t%s\n", temp->name, temp->number);
+        printf("%s\t\t%s\n", temp->name, temp->number);
         temp = temp->next;
     }
 }
@@ -65,6 +65,7 @@ void write_data()
     {
         fprintf(fp, "%s,%s", cur->name, cur->number);
     }
+    fprintf(fp, "\n");
     fclose(fp);
 }
 
@@ -78,7 +79,7 @@ void insert_data()
     node *newNode = (node *)malloc(sizeof(node));
     printf("\nEnter Name:");
     gets(newNode->name);
-    printf("Enter Number:");
+    printf("\nEnter Number:");
     gets(newNode->number);
     newNode->next = temp->next;
     temp->next = newNode;
@@ -149,6 +150,7 @@ void delete_data()
         if (count == 0)
         {
             printf("\nPerson Doesn't Exist\n");
+            return;
         }
         else
         {
@@ -161,15 +163,28 @@ void delete_data()
 void selection_menu()
 {
     int choice;
+    printf("\n1.View All Contacts\n2.Add New Contact\n3.Delete Contact\n4.View Contact Details\n5.Sort Contacts\n0.Exit\n");
     printf("Enter Your Choice:");
     scanf("%d", &choice);
-
     switch (choice)
     {
-    case 1:
+    case 0:
+        exit(0);
         break;
-
+    case 1:
+        print_list();
+        break;
+    case 2:
+        insert_data();
+        break;
+    case 3:
+        delete_data();
+        break;
+    case 4:
+        search_list();
+        break;
     default:
+        printf("\n**************Invalid Input**************n\a");
         break;
     }
 }
@@ -177,7 +192,17 @@ void selection_menu()
 void main()
 {
     read_data();
+    /*
     print_list();
+    printf("----------Insert Data----------");
     insert_data();
+    printf("----------Delete Data----------");
     delete_data();
+    printf("----------Search Data----------");
+    search_list();
+    */
+    while (1)
+    {
+        selection_menu();
+    }
 }

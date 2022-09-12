@@ -79,5 +79,6 @@ void main()
     create_list();
     print_list();
     insert_in_sorted_list();
+    printf("\nAfter Insertion:");
     print_list();
 }
