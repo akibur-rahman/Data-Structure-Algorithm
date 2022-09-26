@@ -20,7 +20,7 @@ typedef struct student
     struct student *next;
 } student;
 
-student *head, *temp, *prev, *cur;
+student *head, *temp, *prev;
 
 float calculate_best_2_ct_avarage(float a, float b, float c)
 {
