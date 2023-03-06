@@ -1,7 +1,7 @@
 
 public class MergeSort1 {
     public static void main(String[] args) {
-        int[] arr = { 6, 2, 10, 1, 5, 4, 9, 8, 7, 3 };
+        int[] arr = { 20, 7, 15, 9, 35, 4, 1, 11, 7, 16 };
         margesort(arr, 0, arr.length - 1);
     }
 
