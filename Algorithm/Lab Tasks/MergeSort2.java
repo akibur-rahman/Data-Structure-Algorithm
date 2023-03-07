@@ -8,6 +8,21 @@ public class MergeSort2 {
         margesort(arr1, 0, arr1.length - 1);
         System.out.println("Array 2:");
         margesort(arr2, 0, arr2.length - 1);
+
+        // create an array of size arr1+arr2 and copy the elements of arr1 and arr2 into
+        // it
+        int[] arr3 = new int[arr1.length + arr2.length];
+        for (int i = 0; i < arr1.length; i++) {
+            arr3[i] = arr1[i];
+        }
+        for (int i = 0; i < arr2.length; i++) {
+            arr3[arr1.length + i] = arr2[i];
+        }
+        //
+        System.out.println("Combined array:");
+        for (int elements : arr3) {
+            System.out.print(elements + " ");
+        }
     }
 
     public static void margesort(int[] arr, int start, int end) {
@@ -47,8 +62,8 @@ public class MergeSort2 {
         for (int l = 0; l < temp.length; l++) {
             arr[start + l] = temp[l];
         }
-        for (int l = 0; l < arr.length; l++) {
-            System.out.print(arr[l] + " ");
+        for (int l = 0; l < temp.length; l++) {
+            System.out.print(temp[l] + " ");
         }
         System.out.println();
     }
