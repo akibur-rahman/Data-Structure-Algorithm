@@ -1,5 +1,4 @@
 public class QuickSort {
-    // write me quicksort with a dummy data of 10 array elements
     public static void main(String[] args) {
         int[] arr = { 1, 5, 2, 4, 3, 9, 8, 7, 6, 0 };
         quickSort(arr, 0, arr.length - 1);
@@ -33,7 +32,6 @@ public class QuickSort {
             }
         }
 
-        // printArray(arr, left, right);
         int temp = arr[i + 1];
         arr[i + 1] = arr[right];
         arr[right] = temp;
