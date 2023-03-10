@@ -8,6 +8,15 @@ public class MergeSort2 {
         margesort(arr1, 0, arr1.length - 1);
         System.out.println("Array 2:");
         margesort(arr2, 0, arr2.length - 1);
+        int[] arr3 = new int[arr1.length + arr2.length];
+        for (int i = 0; i < arr1.length; i++) {
+            arr3[i] = arr1[i];
+        }
+        for (int i = 0; i < arr2.length; i++) {
+            arr3[arr1.length + i] = arr2[i];
+        }
+        margesort(arr3, 0, arr3.length - 1);
+
     }
 
     public static void margesort(int[] arr, int start, int end) {
@@ -15,11 +24,11 @@ public class MergeSort2 {
             int mid = (start + end) / 2;
             margesort(arr, start, mid);
             margesort(arr, mid + 1, end);
-            margesort(arr, start, mid, end);
+            marge(arr, start, mid, end);
         }
     }
 
-    public static void margesort(int[] arr, int start, int mid, int end) {
+    public static void marge(int[] arr, int start, int mid, int end) {
         int[] temp = new int[end - start + 1];
         int i = start;
         int j = mid + 1;
@@ -47,8 +56,8 @@ public class MergeSort2 {
         for (int l = 0; l < temp.length; l++) {
             arr[start + l] = temp[l];
         }
-        for (int l = 0; l < arr.length; l++) {
-            System.out.print(arr[l] + " ");
+        for (int l = 0; l < temp.length; l++) {
+            System.out.print(temp[l] + " ");
         }
         System.out.println();
     }
