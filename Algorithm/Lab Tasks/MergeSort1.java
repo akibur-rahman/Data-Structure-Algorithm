@@ -19,7 +19,7 @@ public class MergeSort1 {
         int i = start;
         int j = mid + 1;
         int k = 0;
-        while (i <= mid && j <= end) {
+        while (i <= mid && j <= end) { // merging the two arrays
             if (arr[i] < arr[j]) {
                 temp[k] = arr[i];
                 i++;
@@ -29,7 +29,7 @@ public class MergeSort1 {
             }
             k++;
         }
-        while (i <= mid) {
+        while (i <= mid) { // if any element is left in the first array
             temp[k] = arr[i];
             i++;
             k++;
