@@ -42,8 +42,8 @@ public class MergeSort1 {
         for (int l = 0; l < temp.length; l++) {
             arr[start + l] = temp[l];
         }
-        for (int l = 0; l < arr.length; l++) {
-            System.out.print(arr[l] + " "); // printing the array
+        for (int l = 0; l < temp.length; l++) {
+            System.out.print(temp[l] + " ");
         }
         System.out.println();
     }
