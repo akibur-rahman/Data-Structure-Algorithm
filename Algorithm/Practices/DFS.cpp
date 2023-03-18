@@ -2,35 +2,25 @@
 
 using namespace std;
 
-const int N = 1e5 + 5;
-vector<int> graph[N];
-bool visited[N];
+const int N = 1000;
+vector<int> g[N];
+bool vis[N];
 
-void dfs(int source)
+void dfs(int u)
 {
-    visited[source] = true;
-    cout << "Source: " << source << " ";
-    for (int child : graph[source])
+    vis[u] = true;
+    for (int v : g[u])
     {
-        cout << "Child: " << child << " ";
-        if (!visited[child])
-            continue;
-        dfs(child);
+        if (!vis[v])
+        {
+            dfs(v);
+        }
     }
 }
 
-int main()
+int main(int argc, char const *argv[])
 {
     int e;
     cin >> e;
-
-    for (int i = 0; i < e; i++)
-    {
-        int u, v;
-        cin >> u >> v;
-        graph[u].push_back(v);
-        graph[v].push_back(u);
-    }
-    dfs(0);
     return 0;
 }
