@@ -32,7 +32,7 @@ class BFSAlgorithm {
             else if (counter == 1)
                 e = Integer.parseInt(st);
             else {
-                String[] arr = new String[2];
+                String[] arr = st.split(" ");
                 int j = Integer.parseInt(arr[0]);
                 int k = Integer.parseInt(arr[1]);
                 graph[j][k] = 1;
