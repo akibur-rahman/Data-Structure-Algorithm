@@ -26,14 +26,14 @@ class BFSAlgorithm {
                                                                                                                           // file
                                                                                                                           // path
 
-        BufferedReader br = new BufferedReader(new FileReader(file));
+        BufferedReader br = new BufferedReader(new FileReader(file)); // read file
         String st;
         st = br.readLine();
         n = Integer.parseInt(st);
 
         int[][] graph = new int[n][n];
 
-        while ((st = br.readLine()) != null) {
+        while ((st = br.readLine()) != null) { // read line by line
             if (counter == 0)
                 n = Integer.parseInt(st);
             else if (counter == 1)
