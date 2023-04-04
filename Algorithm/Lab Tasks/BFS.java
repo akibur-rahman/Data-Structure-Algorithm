@@ -17,7 +17,14 @@ class BFSAlgorithm {
         int n, e;
 
         File file = new File(
-                "C:\\Users\\Administrator\\Documents\\GitHub\\Data-Structure-Algorithm\\Algorithm\\Lab Tasks\\data.txt");
+                "C:\\Users\\Administrator\\Documents\\GitHub\\Data-Structure-Algorithm\\Algorithm\\Lab Tasks\\data.txt"); // change
+                                                                                                                          // file
+                                                                                                                          // path
+                                                                                                                          // to
+                                                                                                                          // your
+                                                                                                                          // own
+                                                                                                                          // file
+                                                                                                                          // path
 
         BufferedReader br = new BufferedReader(new FileReader(file));
         String st;
