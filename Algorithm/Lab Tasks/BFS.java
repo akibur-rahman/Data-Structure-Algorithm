@@ -50,7 +50,7 @@ class BFSAlgorithm {
 
         br.close();
 
-        int vis[], lev[], parent[];
+        int vis[], lev[], parent[]; // vis = visited, lev = level, parent = parent node
 
         vis = new int[n];
         lev = new int[n];
@@ -58,7 +58,7 @@ class BFSAlgorithm {
 
         for (int i = 0; i < n; i++) {
             vis[i] = 0;
-            lev[i] = 999999;
+            lev[i] = 999999; // infinity
         }
 
         int s = 0;
@@ -69,13 +69,13 @@ class BFSAlgorithm {
         q.add(s);
 
         while (!q.isEmpty()) {
-            int u = q.poll();
+            int u = q.poll(); // remove from queue
             for (int v = 0; v < n; v++) {
                 if (graph[u][v] == 1 && vis[v] == 0) {
                     vis[v] = 1;
                     lev[v] = lev[u] + 1;
                     parent[v] = u;
-                    q.add(v);
+                    q.add(v); // add to queue
                 }
             }
             vis[u] = 2;
