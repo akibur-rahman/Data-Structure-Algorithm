@@ -1,47 +1,88 @@
-import java.util.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
-public class DFS {
+public final class DFS {
 
-    static int N = 8;
-    static char[] c = { 'S', 'A', 'B', 'C', 'D', 'E', 'F', 'G' };
+    int node, edge, graph[][], color[], prev[], d[], f[], time, start, end;
 
-    static int list[][] = { { 1, 2, 3 }, { 0, 4 }, { 0, 5 }, { 0, 6 }, { 1, 7 }, { 2, 7 },
+    DFS() {
+        try {
+            File dfsfile = new File(
+                    "C:\\Users\\Administrator\\Documents\\GitHub\\Data-Structure-Algorithm\\Algorithm\\Lab Tasks\\dfs.txt");
+            try (Scanner scanner = new Scanner(dfsfile)) {
+                node = scanner.nextInt();
+                edge = scanner.nextInt();
 
-            { 3, 7 }, { 4, 5, 6 } };
-
-    static int[] color = new int[N];
-    static int[] prev = new int[N];
-    static int f[] = new int[N];
-    static int d[] = new int[N];
-    static int time = 0;
-
-    public static void main(String[] args) {
-        for (int i = 0; i < N; i++) {
-            color[i] = 0; // white;
-            prev[i] = -1;
-            d[i] = f[i] = 999999;
-        }
-        for (int i = 0; i < N; i++) {
-            if (color[i] == 0) {
-                runDFS(i);
+                graph = new int[node][node];
+                for (int i = 0; i < edge; i++) {
+                    int edge_a = scanner.nextInt();
+                    int edge_b = scanner.nextInt();
+                    graph[edge_a][edge_b] = 1;
+                    graph[edge_b][edge_a] = 1;
+                }
+                start = scanner.nextInt();
+                end = scanner.nextInt();
+                scanner.close();
             }
+        } catch (FileNotFoundException e) {
+            System.out.println("File Not Found");
+            System.exit(0);
+        }
+
+        color = new int[node];
+        prev = new int[node];
+        d = new int[node];
+        f = new int[node];
+
+        for (int i = 0; i < node; i++) // initialize the visited and level array
+        {
+            color[i] = 0; // white
+            prev[i] = -1; // infinite
+            f[i] = 999999999;
+            d[i] = 999999999;
+        }
+        time = 0;
+        DFS_travarse(start);
+        for (int i = 0; i < node; i++) {
+            if (color[i] == 0) {
+                DFS_travarse(i);
+            }
+        }
+        print_path(start, end);
+        System.out.println("");
+    }
+
+    void DFS_travarse(int u) {
+        color[u] = 1;
+        time++;
+        d[u] = time;
+        for (int v = 0; v < node; v++) {
+            if (graph[u][v] == 1 && color[v] == 0) // visit the child nodes v
+            {
+                prev[v] = u;
+                DFS_travarse(v);
+            }
+        }
+        color[u] = 2;
+        time++;
+        f[u] = time;
+    }
+
+    private void print_path(int s, int d) {
+        if (d == s) {
+            System.out.print(s);
+            return;
+        } else if (prev[d] == -1) {
+            System.out.println("No Path");
+            System.exit(0);
+        } else {
+            print_path(s, prev[d]);
+            System.out.print("-->" + d);
         }
     }
 
-    private static void runDFS(int u) {
-        System.out.print(c[u] + " ");
-        color[u] = 1; // gray
-        time++;
-        d[u] = time;
-        for (int i = 0; i < list[u].length; i++) {
-            int v = list[u][i];
-            if (color[v] == 0) {
-                prev[v] = u;
-                runDFS(v);
-            }
-        }
-        color[u] = 2; // black
-        time++;
-        f[u] = time;
+    public static void main(String[] args) {
+        new DFS();
     }
 }
