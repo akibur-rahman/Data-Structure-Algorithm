@@ -1,5 +1,3 @@
-package Algorithm.Practices;
-
 public class Knapsack {
 
     static int max(int a, int b) {
