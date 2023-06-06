@@ -10,9 +10,9 @@ public class LIS {
         int max = 0;
         int index = 0;
         for (int i = size; i >= 0; i--) {
-            if (length[i] > max) {
-                max = length[i];
-                index = i;
+            if (length[i] > max) { // find the maximum length
+                max = length[i]; // update the maximum length
+                index = i; // update the index of the maximum length
             }
         }
         return index;
@@ -37,13 +37,13 @@ public class LIS {
         }
         arr[0] = 0;
         length[0] = 0;
-        prev[0] = -1;
+        prev[0] = -1; // -1 means no previous element
 
         for (int i = 1; i <= size; i++) {
             for (int j = i - 1; j >= 0; j--) {
                 if (arr[j] < arr[i]) {
-                    length[i] = length[j] + 1;
-                    prev[i] = j;
+                    length[i] = length[j] + 1; // length of i is length of j + 1
+                    prev[i] = j; // previous element of i is j
                     break;
                 }
             }
