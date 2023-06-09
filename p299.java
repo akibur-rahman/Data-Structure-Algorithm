@@ -55,7 +55,6 @@
  * Optimal train swapping takes 6 swaps.
  * Optimal train swapping takes 1 swaps
  */
-//solve this problem using bubble sort
 
 public class p299 {
     public static void main(String[] args) {
