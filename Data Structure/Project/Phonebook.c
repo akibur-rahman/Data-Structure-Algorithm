@@ -78,9 +78,9 @@ void insert_data()
     }
     node *newNode = (node *)malloc(sizeof(node));
     printf("\nEnter Name:");
-    gets(newNode->name);
+    scanf("%s", newNode->name);
     printf("\nEnter Number:");
-    gets(newNode->number);
+    scanf("%s", newNode->number);
     newNode->next = temp->next;
     temp->next = newNode;
     write_data();
@@ -91,7 +91,7 @@ void search_list()
 {
     char contactName[30];
     printf("\nEnter Name:");
-    gets(contactName);
+    scanf("%s", contactName);
     temp = head;
     while (temp != NULL)
     {
@@ -108,7 +108,7 @@ void delete_data()
 {
     char contactName[30];
     printf("\nEnter Name:");
-    gets(contactName);
+    scanf("%s", contactName);
     int count = 0;
     prev = NULL;
     temp = head;
@@ -160,6 +160,33 @@ void delete_data()
     }
 }
 
+// create a function to sort the list
+void sort_list()
+{
+    node *temp1, *temp2;
+    char tempName[30], tempNumber[20];
+    temp1 = head;
+    while (temp1 != NULL)
+    {
+        temp2 = temp1->next;
+        while (temp2 != NULL)
+        {
+            if (strcmp(temp1->name, temp2->name) > 0)
+            {
+                strcpy(tempName, temp1->name);
+                strcpy(tempNumber, temp1->number);
+                strcpy(temp1->name, temp2->name);
+                strcpy(temp1->number, temp2->number);
+                strcpy(temp2->name, tempName);
+                strcpy(temp2->number, tempNumber);
+            }
+            temp2 = temp2->next;
+        }
+        temp1 = temp1->next;
+    }
+    printf("\nList Sorted Successfully\n");
+}
+
 void selection_menu()
 {
     int choice;
@@ -183,6 +210,9 @@ void selection_menu()
     case 4:
         search_list();
         break;
+    case 5:
+        sort_list();
+        break;
     default:
         printf("\n**************Invalid Input**************n\a");
         break;
@@ -192,15 +222,6 @@ void selection_menu()
 void main()
 {
     read_data();
-    /*
-    print_list();
-    printf("----------Insert Data----------");
-    insert_data();
-    printf("----------Delete Data----------");
-    delete_data();
-    printf("----------Search Data----------");
-    search_list();
-    */
     while (1)
     {
         selection_menu();
