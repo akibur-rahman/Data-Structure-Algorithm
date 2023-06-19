@@ -56,27 +56,59 @@
  * Optimal train swapping takes 1 swaps
  */
 
-public class p299 {
+//solve it using mergesort
+
+import java.util.Scanner;
+
+class p299 {
+
+    public static int mergeSort(int[] arr, int l, int r) {
+        int count = 0;
+        if (l < r) {
+            int m = (l + r) / 2;
+            count += mergeSort(arr, l, m); // count the number of swaps
+            count += mergeSort(arr, m + 1, r); // count the number of swaps
+            count += merge(arr, l, m, r); // count the number of swaps
+        }
+        return count; // return the number of swaps
+    }
+
+    public static int merge(int[] arr, int l, int m, int r) {
+        int[] temp = new int[r - l + 1];
+        int i = l, j = m + 1, k = 0, count = 0;
+        while (i <= m && j <= r) {
+            if (arr[i] <= arr[j]) {
+                temp[k++] = arr[i++];
+            } else {
+                temp[k++] = arr[j++];
+                count += m - i + 1;
+            }
+        }
+        while (i <= m) {
+            temp[k++] = arr[i++];
+        }
+        while (j <= r) {
+            temp[k++] = arr[j++];
+        }
+        for (i = l, k = 0; i <= r; i++, k++) {
+            arr[i] = temp[k];
+        }
+        return count;
+    }
+
     public static void main(String[] args) {
-        java.util.Scanner sc = new java.util.Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
+        int[] arr;
+        int count;
         while (n-- > 0) {
+            count = 0;
             int l = sc.nextInt();
-            int[] arr = new int[l];
+            arr = new int[l];
             for (int i = 0; i < l; i++) {
                 arr[i] = sc.nextInt();
             }
-            int count = 0;
-            for (int i = 0; i < l - 1; i++) {
-                for (int j = 0; j < l - i - 1; j++) {
-                    if (arr[j] > arr[j + 1]) {
-                        int temp = arr[j + 1];
-                        arr[j + 1] = arr[j];
-                        arr[j] = temp;
-                        count++;
-                    }
-                }
-            }
+            count = mergeSort(arr, 0, l - 1);
             System.out.println("Optimal train swapping takes " + count + " swaps.");
         }
         sc.close();
