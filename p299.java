@@ -56,8 +56,6 @@
  * Optimal train swapping takes 1 swaps
  */
 
-//solve it using mergesort
-
 import java.util.Scanner;
 
 class p299 {
