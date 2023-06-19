@@ -98,13 +98,13 @@ class p299 {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int[] arr;
-        int count;
-        while (n-- > 0) {
-            count = 0;
-            int l = sc.nextInt();
-            arr = new int[l];
-            for (int i = 0; i < l; i++) {
-                arr[i] = sc.nextInt();
+        int count; // count the number of swaps
+        while (n-- > 0) { // for each test case
+            count = 0; // reset the number of swaps
+            int l = sc.nextInt(); // length of the train
+            arr = new int[l]; // array of the train
+            for (int i = 0; i < l; i++) { // for each carriage
+                arr[i] = sc.nextInt(); // read the carriage
             }
             count = mergeSort(arr, 0, l - 1);
             System.out.println("Optimal train swapping takes " + count + " swaps.");
