@@ -34,11 +34,15 @@ To get from b1 to c3 takes 1 knight moves.
 To get from f6 to f6 takes 0 knight moves
  */
 
-public class p439 {
+import java.util.Scanner;
+import java.util.Queue;
+import java.util.LinkedList;
+
+class p439 {
 
     public static void main(String[] args) {
-        java.util.Scanner sc = new java.util.Scanner(System.in);
-        while (sc.hasNext()) {
+        Scanner sc = new Scanner(System.in);
+        while (sc.hasNext()) { // while there is next input(there always is in this case)
             String a = sc.next();
             String b = sc.next();
             int x1 = a.charAt(0) - 'a'; // convert char to int
@@ -48,17 +52,17 @@ public class p439 {
             int[][] board = new int[8][8]; // create a chessboard
             int[] dx = { -2, -2, -1, -1, 1, 1, 2, 2 }; // 8 possible moves
             int[] dy = { -1, 1, -2, 2, -2, 2, -1, 1 }; // 8 possible moves
-            java.util.Queue<Integer> qx = new java.util.LinkedList<>(); // create a queue
-            java.util.Queue<Integer> qy = new java.util.LinkedList<>(); // create a queue
+            Queue<Integer> qx = new LinkedList<>();
+            Queue<Integer> qy = new LinkedList<>();
             qx.add(x1); // add x1 to queue
             qy.add(y1); // add y1 to queue
-            board[x1][y1] = 1;
+            board[x1][y1] = 0; // update board
             while (!qx.isEmpty()) { // while queue is not empty
                 int x = qx.poll(); // remove x from queue
                 int y = qy.poll(); // remove y from queue
-                if (x == x2 && y == y2) { // if x and y are equal to x2 and y2
+                if (x == x2 && y == y2) { // if the destination is reached
                     System.out.println(
-                            "To get from " + a + " to " + b + " takes " + (board[x][y] - 1) + " knight moves.");
+                            "To get from " + a + " to " + b + " takes " + (board[x][y]) + " knight moves.");
                     break;
                 }
                 for (int i = 0; i < 8; i++) { // for loop to check all 8 possible moves
