@@ -5,6 +5,20 @@
             "name": "p439",
             "request": "launch",
             "mainClass": "p439",
+            "projectName": "Data-Structure-Algorithm_615c56c3"
+        },
+        {
+            "type": "java",
+            "name": "p299",
+            "request": "launch",
+            "mainClass": "p299",
+            "projectName": "Data-Structure-Algorithm_615c56c3"
+        },
+        {
+            "type": "java",
+            "name": "p439",
+            "request": "launch",
+            "mainClass": "p439",
             "projectName": "Data-Structure-Algorithm_e201de0"
         },
         {
