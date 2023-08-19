@@ -7,7 +7,7 @@ def binarySearch(arr, key):
     start = 0
     end = len(arr) - 1
     while start <= end:
-        mid = (start+end)//2
+        mid = (start+end)//2  # We can do integer division using // operator
         if arr[mid] == key:
             return mid
         elif arr[mid] < key:
