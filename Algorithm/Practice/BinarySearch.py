@@ -3,6 +3,8 @@
 # Time Complexity: O(logn)
 # Space Complexity: O(1)
 
+# Use devide and conqure method to break the problem into smaller sub problem
+
 def binarySearch(arr, key):
     start = 0
     end = len(arr) - 1
