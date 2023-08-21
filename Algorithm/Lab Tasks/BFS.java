@@ -5,6 +5,7 @@ import java.util.Queue;
 import java.io.FileReader;
 import java.io.IOException;
 
+//breadth first search
 class BFSAlgorithm {
 
     BFSAlgorithm() throws IOException {
