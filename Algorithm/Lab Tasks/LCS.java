@@ -1,6 +1,7 @@
 
 import java.util.Scanner;
 
+//longest common subsequence
 public class LCS {
 
     static int max(int a, int b) { // max fucntion
