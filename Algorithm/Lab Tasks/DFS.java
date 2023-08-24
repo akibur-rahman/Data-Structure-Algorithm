@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+//depth first search
 public final class DFS {
 
     int node, edge, graph[][], color[], prev[], d[], f[], time, start, end;
