@@ -5,6 +5,7 @@
 
 # Use devide and conqure method to break the problem into smaller sub problem
 
+# Binary Search, finds mid and compares it with key, if key is greater than mid, then we search in right half of array, if key is smaller than mid, then we search in left half of array, if key is equal to mid, then we return mid, if key is not found, then we return -1
 def binarySearch(arr, key):
     start = 0
     end = len(arr) - 1
