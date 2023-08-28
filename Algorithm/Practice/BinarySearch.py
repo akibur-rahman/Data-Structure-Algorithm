@@ -22,5 +22,6 @@ def binarySearch(arr, key):
 
 # We need a soted array for binary search
 arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-key = 11
+key = 9
+key = 9
 print(binarySearch(arr, key))
